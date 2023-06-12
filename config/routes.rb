@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'home#index'
   resources :events, only: [:index] do
-    get 'enroll', to: 'events#enroll', as: 'enroll', on: :member 
+    get 'enroll', to: 'events#enroll', as: 'enroll', on: :member
   end
-  
+  require 'sidekiq/web'
+
+  mount Sidekiq::Web => '/sidekiq'
 end

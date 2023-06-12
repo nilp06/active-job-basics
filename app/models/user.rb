@@ -5,4 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_one :employee, dependent: :destroy
   has_and_belongs_to_many :events
+
+  after_create :send_email
+
+  private
+
+  def send_email
+    SendWelcomeEmailJob.set(wait: 1.minute).perform_later(self)
+  end
 end

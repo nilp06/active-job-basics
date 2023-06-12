@@ -16,7 +16,6 @@ Rails.application.configure do
 
   # Enable server timing
   config.server_timing = true
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
   if Rails.root.join('tmp/caching-dev.txt').exist?
@@ -58,6 +57,20 @@ Rails.application.configure do
 
   # Suppress logger output for asset requests.
   config.assets.quiet = true
+
+  config.action_mailer.default_url_options = { host: 'localhost:3000', port: 3000, protocol: 'http' }
+  # Raises error for missing translations.
+  # config.i18n.raise_on_missing_translations = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.gmail.com',
+    domain: 'gmail.com',
+    port: 587,
+    user_name: ENV['gmail_user'],
+    password: ENV['gmail_password'],
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
 
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true

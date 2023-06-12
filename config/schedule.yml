@@ -1,0 +1,8 @@
+create_random_event:
+   cron: "0 * * * *"
+   class: "CreateRandomEvent"
+
+send_event_list:
+   cron: "5 18 * * * Asia/Kolkata"
+   class: "SendEventList"
+

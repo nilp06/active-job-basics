@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+require 'sidekiq/cron/web'
 Rails.application.routes.draw do
   get 'home/index'
   devise_for :users
@@ -8,7 +10,6 @@ Rails.application.routes.draw do
   resources :events, only: [:index] do
     get 'enroll', to: 'events#enroll', as: 'enroll', on: :member
   end
-  require 'sidekiq/web'
 
   mount Sidekiq::Web => '/sidekiq'
 end

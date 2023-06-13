@@ -1,0 +1,16 @@
+<h1>Hi <%= user.name %>.</h1>
+<h1 style="text-align: center; color: red;">Event List</h1>
+<table>
+  <thead>
+    <th>Event Name</th>
+    <th>Event Date</th>
+  </thead>
+  <tbody>
+    <% @events.each do |event| %>
+      <tr>
+        <td><%= event.name %></td>
+        <td><%= event.event_date %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

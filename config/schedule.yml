@@ -5,4 +5,3 @@ create_random_event:
 send_event_list:
    cron: "5 18 * * * Asia/Kolkata"
    class: "SendEventList"
-

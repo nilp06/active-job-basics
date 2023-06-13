@@ -9,4 +9,10 @@ class UserMailer < ApplicationMailer
     @events = params[:events]
     mail(to: @user.email, subject: 'Event List')
   end
+
+  def send_event_invite
+    @user = params[:user]
+    @event = params[:event]
+    mail(to: @user.email, subject: 'Invitation of Event')
+  end
 end
